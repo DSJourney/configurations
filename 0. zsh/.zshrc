@@ -30,6 +30,7 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 setopt HIST_IGNORE_ALL_DUPS # Ignores duplicated commands history list
 setopt SHARE_HISTORY        # When working in parallel sessions this shares history
+alias history='history 1'   # https://stackoverflow.com/questions/26846738/zsh-history-is-too-short
 
 # PYENV Configurations
 eval "$(pyenv init --path)" # This only sets up the path stuff.
@@ -62,7 +63,7 @@ function cd() {
     cur_dir=$(pwd -P)
     venv_dir="$(dirname "$VIRTUAL_ENV")"
     if [[ "$cur_dir"/ != "$venv_dir"/* ]] ; then
-      deactivate
+      source deactivate
     fi
   fi
 
